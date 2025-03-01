@@ -1,16 +1,8 @@
 // apiService.js
-<<<<<<< HEAD
-export const BASE_URL = 'http://localhost/my-profile/server'; 
-=======
-<<<<<<< HEAD
-export const BASE_URL = 'http://localhost/my-profile/server'; 
-=======
 // export const BASE_URL = 'http://localhost/my-profile/server'; 
 // // export const BASE_URL = 'http://ngogiaquyen.id.vn/server'; 
 const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 console.log(BASE_URL)
->>>>>>> ced8403 (chat backend)
->>>>>>> 4ba7f15 (chat backend)
 
 export const getData = async (endpoint, params = {}) => {
   // Tạo query string nếu có params

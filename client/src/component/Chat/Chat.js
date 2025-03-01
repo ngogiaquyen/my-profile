@@ -41,15 +41,7 @@ function Chat({ receiverId = "", receiverName = "" }) {
         const formData = new FormData();
         
         // formData.append("sender_id", "1");
-<<<<<<< HEAD
         formData.append("receiver_id", "1");
-=======
-<<<<<<< HEAD
-        formData.append("receiver_id", "1");
-=======
-        formData.append("receiver_id", "2");
->>>>>>> ced8403 (chat backend)
->>>>>>> 4ba7f15 (chat backend)
         formData.append("message", input);
         
         const res = await postData("/chat/create", formData);
