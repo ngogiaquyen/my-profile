@@ -8,16 +8,16 @@ function NavBar() {
             <div className="navbar-container">
                 <ul className="navbar-menu">
                     <li className="navbar-item">
-                        <NavLink to="/" className="navbar-link" activeClassName="active" exact>Home</NavLink>
+                        <NavLink to="/" className="navbar-link" >Home</NavLink>
                     </li>
                     <li className="navbar-item">
-                        <NavLink to="/profile" className="navbar-link" activeClassName="active">Profile</NavLink>
+                        <NavLink to="/profile" className="navbar-link" >Profile</NavLink>
                     </li>
                     <li className="navbar-item">
-                        <NavLink to="/projects" className="navbar-link" activeClassName="active">Projects</NavLink>
+                        <NavLink to="/projects" className="navbar-link" >Projects</NavLink>
                     </li>
                     <li className="navbar-item">
-                        <NavLink to="/stories" className="navbar-link" activeClassName="active">Stories</NavLink>
+                        <NavLink to="/stories" className="navbar-link" >Stories</NavLink>
                     </li>
                 </ul>
             </div>

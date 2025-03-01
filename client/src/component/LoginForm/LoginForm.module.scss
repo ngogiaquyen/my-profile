@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #111, #000);
+}
+
+.loginForm {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  width: 320px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.inputGroup {
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 10px #00eaff;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #00eaff, #0078ff);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: linear-gradient(45deg, #0078ff, #00eaff);
+  box-shadow: 0 0 15px #00eaff;
+}

@@ -5,18 +5,26 @@ import Profile from "./page/Profile";
 import Projects from "./page/Projects";
 import Stories from "./page/Stories";
 import NavBar from "./component/NavBar";
+import Chat from "./component/Chat";
+import ModalOverLay from "./component/ModalOverLay";
 
+import "./App.css"
+import ChatAdmin from "./component/Chat/ChatUser";
 function App() {
+
   return (
     <Router>
-      <div className="app">
+      <div className="App">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/stories" element={<Stories />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/chatadmin" element={<ChatAdmin />} />
         </Routes>
+        <ModalOverLay/>
       </div>
     </Router>
   );

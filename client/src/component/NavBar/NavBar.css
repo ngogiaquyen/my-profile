@@ -1,8 +1,10 @@
 .navbar {
+    height: 56px;
     background-color: #1f1f1f; /* Dark background */
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
     font-family: 'Roboto', sans-serif; /* Modern font */
+    box-sizing: border-box;
 }
 
 .navbar-container {
