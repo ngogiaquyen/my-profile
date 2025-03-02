@@ -1,0 +1,133 @@
+.post-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+  gap: 20px;
+}
+
+.post {
+  width: calc(50% - 10px);
+  background-color: #fff; /* White background for posts */
+  border: 1px solid #ddd; /* Light border */
+  padding: 20px;
+  // margin-bottom: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.post-meta  {
+    font-size: 22px;
+    .icon{
+        margin-right: 2px;
+
+    }
+    .like{
+
+    }
+}
+.post img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px; /* Rounded corners for images */
+}
+
+.post em {
+  color: #777;
+  font-size: 0.9em;
+}
+
+.post-actions button {
+  //   background-color: #61dafb; /* React color */
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.post-actions button:hover {
+  background-color: #21a1f1;
+  transform: scale(1.05);
+}
+
+.comment-section {
+  margin-top: 15px;
+}
+
+.comment-list {
+  margin-bottom: 10px;
+}
+
+.comment {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.comment p {
+  color: #555;
+}
+
+.comment em {
+  color: #777;
+  font-size: 0.8em;
+}
+
+.comment input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+.comment button {
+  margin-top: 5px;
+  background-color: #61dafb;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.comment button:hover {
+  background-color: #21a1f1;
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 768px){
+  .post{
+    width: 100%;
+  }
+}

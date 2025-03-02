@@ -10,6 +10,7 @@ import ModalOverLay from "./component/ModalOverLay";
 
 import "./App.css"
 import ChatAdmin from "./component/Chat/ChatUser";
+import ThreePicture from "./component/ThreePicture";
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/stories" element={<Stories />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/temp" element={<ThreePicture />} />
           <Route path="/chatadmin" element={<ChatAdmin />} />
         </Routes>
         <ModalOverLay/>
