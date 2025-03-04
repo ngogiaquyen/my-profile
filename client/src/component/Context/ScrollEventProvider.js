@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 const ScrollEventContext = createContext();
+
 function ScrollEventProvider({ children }) {
   const [scrollDirection, setScrollDirection] = useState("up");
 

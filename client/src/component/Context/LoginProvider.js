@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getData } from "../../helper/apiService";
+import { getData } from "~/helper/apiService";
 import LoginForm from "../LoginForm";
 import { ModalOverLayContext } from "./ModalOverLayProvider";
 

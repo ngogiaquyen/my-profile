@@ -1,5 +1,7 @@
 import { LoginProvider } from "./LoginProvider";
 import { ModalOverLayProvider } from "./ModalOverLayProvider";
+import { NavbarScrollProvider } from "./NavbarScrollProvider";
+import { ScrolledPastProvder } from "./ScrolledPastProvder";
 import { ScrollEventProvider } from "./ScrollEventProvider";
 import { SocketProvider } from "./SocketProvider";
 
@@ -8,7 +10,11 @@ function CombinedProvider({ children }) {
     <ModalOverLayProvider>
       <LoginProvider>
         <SocketProvider>
-          <ScrollEventProvider>{children}</ScrollEventProvider>
+          <ScrollEventProvider>
+            <ScrolledPastProvder>
+              <NavbarScrollProvider>{children}</NavbarScrollProvider>
+            </ScrolledPastProvder>
+          </ScrollEventProvider>
         </SocketProvider>
       </LoginProvider>
     </ModalOverLayProvider>

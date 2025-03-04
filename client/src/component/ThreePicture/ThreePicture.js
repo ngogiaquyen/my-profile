@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./ThreePicture.module.scss";
-import avatar from "../../assets/avatar.png"; // Import avatar image
+import avatar from "~/assets/avatar.png"; // Import avatar image
 
 const cx = classNames.bind(styles);
 

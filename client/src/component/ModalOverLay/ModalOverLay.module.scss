@@ -30,7 +30,7 @@
   max-width: 80%;
   background-color: var(--modal-bg-color);
   z-index: 99999;
-  border-radius: 12px;
+  border-radius: var(--border-radius-px);
   border: 1px solid var(--text-color);
   padding: 20px;
   overflow: hidden;

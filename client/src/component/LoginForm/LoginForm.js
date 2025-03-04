@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./LoginForm.module.scss";
-import { postData } from "../../helper/apiService";
+import { postData } from "~/helper/apiService";
 import { ModalOverLayContext } from "../Context/ModalOverLayProvider";
 import { LoginContext } from "../Context/LoginProvider";
 const cx = classNames.bind(styles);

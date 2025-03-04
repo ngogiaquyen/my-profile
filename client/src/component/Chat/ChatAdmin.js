@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./Chat.module.scss";
-import { getData, postData } from "../../helper/apiService";
+import { getData, postData } from "~/helper/apiService";
 import ChatBubble from "../ChatBubble";
 import Chat from "./Chat";
 

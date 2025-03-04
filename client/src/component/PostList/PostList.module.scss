@@ -1,19 +1,24 @@
 .post-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  margin-top: 10px;
   width: 100%;
   gap: 20px;
+  overflow-x: scroll;
+  border-radius: var(--border-radius-px);
 }
 
 .post {
-  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30%;
   background-color: #fff; /* White background for posts */
   border: 1px solid #ddd; /* Light border */
   padding: 20px;
   // margin-bottom: 20px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: var(--border-radius-px); /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -29,6 +34,13 @@
   color: #333;
 }
 
+.post-content{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
 .post-meta {
   display: flex;
   justify-content: space-between;
@@ -38,20 +50,23 @@
 }
 
 .post-meta  {
-    font-size: 22px;
-    .icon{
-        margin-right: 2px;
 
-    }
-    .like{
-
-    }
+  font-size: 18spx;
+  .icon{
+    margin-right: 2px;
+  }
+  .text{
+    
+  }
+  .comment{
+    margin-left: 8px;
+  }
 }
 .post img {
   max-width: 100%;
   height: auto;
   margin-top: 10px;
-  border-radius: 10px; /* Rounded corners for images */
+  border-radius: var(--border-radius-px); /* Rounded corners for images */
 }
 
 .post em {
@@ -109,7 +124,7 @@
   color: #333;
 }
 
-.comment button {
+.comment-btn {
   margin-top: 5px;
   background-color: #61dafb;
   color: #fff;
@@ -128,6 +143,6 @@
 
 @media (max-width: 768px){
   .post{
-    width: 100%;
+    min-width: 100%;
   }
 }

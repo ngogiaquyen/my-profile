@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Chat.module.scss";
-import { SendIcon } from "../../assets/svg";
-import { getData, postData } from "../../helper/apiService";
+import { SendIcon } from "~/assets/svg";
+import { getData, postData } from "~/helper/apiService";
 import { LoginContext } from "../Context/LoginProvider";
 
 const cx = classNames.bind(styles);

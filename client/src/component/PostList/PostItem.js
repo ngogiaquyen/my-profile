@@ -3,7 +3,8 @@ import styles from "./PostList.module.scss"; // Sử dụng CSS Modules
 import classNames from "classnames/bind";
 import Comment from "../Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
+import Button from "../Button/Button";
 
 const cx = classNames.bind(styles);
 
@@ -22,10 +23,16 @@ function PostItem({ post }) {
       )}
 
       <p className={cx("post-meta")}>
-        <em>
-          <FontAwesomeIcon className={cx("icon")} icon={faHeart} />
-          <span className={cx("like")}>97</span>
-        </em>
+        <p>
+          <em>
+            <FontAwesomeIcon className={cx("icon")} icon={faHeart} />
+            <span className={cx("text")}>97</span>
+          </em>
+          <em className={cx("comment")}>
+            <FontAwesomeIcon className={cx("icon")} icon={faComment} />
+            <span className={cx("text")}>31.120</span>
+          </em>
+        </p>
         <em>
           Posted by <span className={cx("post-author")}>{post.author}</span> on{" "}
           {new Date(post.date).toLocaleDateString()}
@@ -46,8 +53,11 @@ function PostItem({ post }) {
         >
           💬 Comment
         </button>
-      </div> */}
-      <Comment />
+        </div> */}
+      {/* <Comment /> */}
+        {/* <Button>
+          Comment
+        </Button> */}
     </div>
   );
 }

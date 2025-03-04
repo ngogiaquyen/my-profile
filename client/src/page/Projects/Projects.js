@@ -1,6 +1,6 @@
 import React from 'react';
 import './Projects.css';
-import image from "../../assets/image.png";
+import image from "~/assets/image.png";
 const projects = [
     {
         id: 1,

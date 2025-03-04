@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Comment from "../../component/Comment";
-import SocialProfile from "../../component/SocialProfile";
+import Comment from "~/component/Comment";
+import SocialProfile from "~/component/SocialProfile";
 import Projects from "../Projects";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
 import Stories from "../Stories/Stories";
-import PostList from "../../component/PostList";
-import ThreePicture from "../../component/ThreePicture";
+import PostList from "~/component/PostList";
+import ThreePicture from "~/component/ThreePicture";
+
+import { useScrolledUpOneScreen } from "~/hooks/useScrolledUpOneScreen";
+import { useScrolledToTop } from "~/hooks/useScrolledToTop";
+import { useScrolledPastComponent } from "~/hooks/useScrolledPastComponent";
+import MessageBoard from "~/component/MessageBoard";
+
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +35,7 @@ const posts = [
   {
     id: 2,
     title: "Second Post",
-    content: "This is the content of the second post.",
+    content: "This is the content ofThis is the content ofThis is the content ofThis is the content ofThis is the content of the second post.",
     author: "User2",
     date: "2023-01-02",
     image: imgLink,
@@ -52,11 +58,65 @@ const posts = [
       { id: 2, content: "Loved it.", date: "2023-01-07" },
     ],
   },
+  {
+    id: 4,
+    title: "Third Post",
+    content: "This is the content of the third post.",
+    author: "User3",
+    date: "2023-01-03",
+    image: imgLink,
+    likes: 8,
+    comments: [
+      { id: 1, content: "Nice one!", date: "2023-01-06" },
+      { id: 2, content: "Loved it.", date: "2023-01-07" },
+    ],
+  },
+  {
+    id: 5,
+    title: "Third Post",
+    content: "This is the content of the third post.",
+    author: "User3",
+    date: "2023-01-03",
+    image: imgLink,
+    likes: 8,
+    comments: [
+      { id: 1, content: "Nice one!", date: "2023-01-06" },
+      { id: 2, content: "Loved it.", date: "2023-01-07" },
+    ],
+  },
+  {
+    id: 6,
+    title: "Third Post",
+    content: "This is the content of the third post.",
+    author: "User3",
+    date: "2023-01-03",
+    image: imgLink,
+    likes: 8,
+    comments: [
+      { id: 1, content: "Nice one!", date: "2023-01-06" },
+      { id: 2, content: "Loved it.", date: "2023-01-07" },
+    ],
+  },
+  {
+    id: 7,
+    title: "Third Post",
+    content: "This is the content of the third post.",
+    author: "User3",
+    date: "2023-01-03",
+    image: imgLink,
+    likes: 8,
+    comments: [
+      { id: 1, content: "Nice one!", date: "2023-01-06" },
+      { id: 2, content: "Loved it.", date: "2023-01-07" },
+    ],
+  },
 ];
 
-function Home() {
+function Home({ref, bound}) {
   // const [posts, setPosts] = useState([]);
   const [activeCommentPostId, setActiveCommentPostId] = useState(null);
+  const scrolledUpOneScreen = useScrolledUpOneScreen();
+  const scrolledToTop = useScrolledToTop();
 
   const handleLike = (postId) => {
     console.log(`Liked post ${postId}`);
@@ -68,9 +128,9 @@ function Home() {
 
   return (
     <div className={cx("homepage")}>
-      <SocialProfile />
       <PostList  posts={posts}/>
       <Stories />
+      <MessageBoard/>
       <Projects />
       <ThreePicture />
     </div>
