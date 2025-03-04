@@ -1,31 +1,33 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from 'react';
 
 const ScrolledPastContext = createContext();
 
 function ScrolledPastProvder({ children }) {
-  const ref = useRef(null);
+  const refNav = useRef(null);
+  const bottomCompRef = useRef(null);
   const [scrolledPast, setScrolledPast] = useState(false);
-  const [bound, setBound] = useState(false);
+  const [isPin, setIsPin] = useState(false);
 
   useEffect(() => {
-    console.log("hell");
     const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        setScrolledPast(rect.bottom <= 0); // Kiểm tra nếu component ra khỏi màn hình trên
-        setBound(rect.top <= 0);
+      if (refNav.current) {
+        const rectNav = refNav.current?.getBoundingClientRect();
+
+        const rectBottom = bottomCompRef.current?.getBoundingClientRect();
+
+        // setScrolledPast(rectNav.top <= 0 && rectBottom.top <= 0); // Kiểm tra nếu component ra khỏi màn hình trên
+        setIsPin(rectNav.top <= 0);
+        setScrolledPast(rectNav.top <= 0); // Kiểm tra nếu component ra khỏi màn hình trên
+
       }
-      console.log(ref);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <ScrolledPastContext.Provider
-      value={{ ref, scrolledPast, setScrolledPast, bound, setBound }}
-    >
+    <ScrolledPastContext.Provider value={{ refNav, isPin,bottomCompRef, scrolledPast, setScrolledPast, setIsPin }}>
       {children}
     </ScrolledPastContext.Provider>
   );

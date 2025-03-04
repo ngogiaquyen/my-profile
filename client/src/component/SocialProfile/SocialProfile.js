@@ -9,9 +9,9 @@ import facebookIcon from "~/assets/facebook.png"; // Import LinkedIn icon
 import linkedinIcon from "~/assets/linkedin.png"; // Import Twitter icon
 const cx = classNames.bind(styles);
 
-function SocialProfile({ref}) {
+function SocialProfile() {
   return (
-    <div className={cx("social-profile")} ref={ref}>
+    <div className={cx("social-profile")}>
       <div className={cx("background")}>
         <img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/449075799_1900100357124625_3198531066683787621_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=86c6b0&_nc_eui2=AeFmv36O0XGZ4ni-Erv-yyBx4mAQ-Zz14jriYBD5nPXiOh24hZNkUI8zOIeZB5H99U78rmytCp6GQmYHL5sVlL22&_nc_ohc=5qHt_2T3fHwQ7kNvgFll8y0&_nc_oc=AdiUnvfvZ3cM7BZgpenRKPdIuFYcsugNXes_QTg4rRMrJfZzxTlaCuVxVau5Nwq3YdItBvLQFn9LmrruQ4u3N4bw&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=Ab9jTveUm9VC1dSbgwq2ny7&oh=00_AYD5bzWWWPWvmJQQyeGvAM5mFxzqyeIVySeQTskdyQE8ow&oe=67C7C686" />
       </div>

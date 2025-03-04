@@ -17,7 +17,6 @@ function ChatAdmin() {
   const readUser = async () => {
     try {
       const data = await getData("/user/read");
-      console.log(data);
       setUsernames(data);
     } catch (error) {
       console.error("Error get message: ", error);
@@ -27,7 +26,6 @@ function ChatAdmin() {
   const fetchData = async () => {
     try {
       const data = await getData("/chat/read");
-      console.log(data);
       setMessages(data);
     } catch (error) {
       console.error("Error get message: ", error);
@@ -41,7 +39,6 @@ function ChatAdmin() {
 
 
   const handleClickBubble = (user) => {
-    console.log("id: ", user.id);
     setReceiverId(user.id);
     setReceiverName(user.username);
   };

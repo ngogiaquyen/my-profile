@@ -12,7 +12,6 @@ function SocketProvider({ children }) {
 
     // socket.onmessage = function (event) {
     //   let data = JSON.parse(event.data);
-    //   console.log(data);
     // };
     //   document.getElementById(
     //     "messages"

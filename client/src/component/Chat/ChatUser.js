@@ -17,7 +17,6 @@ function ChatAdmin() {
   const readUser = async () => {
     try {
       const data = await getData("/user/read");
-      console.log(data);
       setUsernames(data);
     } catch (error) {
       console.error("Error get message: ", error);
@@ -27,7 +26,6 @@ function ChatAdmin() {
   const fetchData = async () => {
     try {
       const data = await getData("/chat/read");
-      console.log(data);
       setMessages(data);
     } catch (error) {
       console.error("Error get message: ", error);
@@ -50,7 +48,6 @@ function ChatAdmin() {
         formData.append("message", input);
 
         const res = await postData("/chat/create", formData);
-        console.log(res);
         setMessages([...messages, input]);
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
       } catch (error) {

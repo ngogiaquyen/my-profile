@@ -5,8 +5,6 @@ const NavbarScrollContext = createContext();
 function NavbarScrollProvider({ children }) {
   const refNav = useRef();
   const scrollToTop = () => {
-    console.log("hllo")
-    console.log(refNav)
     refNav.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (

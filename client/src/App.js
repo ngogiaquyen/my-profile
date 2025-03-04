@@ -6,15 +6,12 @@ import ModalOverLay from "./component/ModalOverLay";
 import "./App.css";
 import EmptyLayout from "./Layouts/EmptyLayout";
 import { publicRouters } from "./routes/routes";
-import { ScrolledPastContext } from "./component/Context/ScrolledPastProvder";
 
 function App() {
-  const { scrolledPast, bound } = useContext(ScrolledPastContext);
 
   return (
     <Router>
       <div className="App">
-        <NavBar isFixed={true} scrolledPast={scrolledPast} bound={bound} />
         <Routes>
           {publicRouters.map((route, index) => {
             const Page = route.component;

@@ -12,9 +12,7 @@ function LoginProvider({ children }) {
   const checkLogin = async () => {
     try {
       const res = await getData("/login/check");
-      console.log(res);
       if (res.is_login) {
-        console.log("set status");
         setloginStatus(res.user_id);
       } else {
         setModalComponentContent(<LoginForm />);

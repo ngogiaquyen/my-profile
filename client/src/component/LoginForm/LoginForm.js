@@ -18,7 +18,6 @@ const LoginForm = () => {
       formData.append("username", username);
       formData.append("password", password);
       const res = await postData("/user/login", formData);
-      console.log(res);
       if (res.status === "success") {
         setModalComponentContent(null);
         setloginStatus(res.user_id);
@@ -30,7 +29,6 @@ const LoginForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Đăng nhập với:", { username, password });
 
     loginFetch();
   };

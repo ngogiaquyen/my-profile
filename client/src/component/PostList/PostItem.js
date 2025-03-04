@@ -5,6 +5,8 @@ import Comment from "../Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import Button from "../Button/Button";
+import { NavLink } from "react-router-dom";
+import routes from "~/configs";
 
 const cx = classNames.bind(styles);
 
@@ -12,7 +14,7 @@ function PostItem({ post }) {
   const handleLike = () => {};
   const handleComment = () => {};
   return (
-    <div key={post.id} className={cx("post")}>
+    <NavLink to={routes.postDetail} key={post.id} className={cx("post")}>
       <h2 className={cx("post-title")}>{post.title}</h2>
       <p className={cx("post-content")}>{post.content}</p>
 
@@ -23,20 +25,20 @@ function PostItem({ post }) {
       )}
 
       <p className={cx("post-meta")}>
-        <p>
-          <em>
+        <p className={cx("post-meta-box")}> 
+          <p className={cx("comment-box")}>
             <FontAwesomeIcon className={cx("icon")} icon={faHeart} />
             <span className={cx("text")}>97</span>
-          </em>
-          <em className={cx("comment")}>
+          </p>
+          <p className={cx("comment-box")}>
             <FontAwesomeIcon className={cx("icon")} icon={faComment} />
             <span className={cx("text")}>31.120</span>
-          </em>
+          </p>
         </p>
-        <em>
+        <p className={cx("post-more")}>
           Posted by <span className={cx("post-author")}>{post.author}</span> on{" "}
           {new Date(post.date).toLocaleDateString()}
-        </em>
+        </p>
       </p>
 
       {/* <div className={cx("post-actions")}>
@@ -58,7 +60,7 @@ function PostItem({ post }) {
         {/* <Button>
           Comment
         </Button> */}
-    </div>
+    </NavLink>
   );
 }
 

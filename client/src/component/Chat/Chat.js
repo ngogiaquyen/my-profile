@@ -23,7 +23,6 @@ function Chat({ receiverId = "", receiverName = "" }) {
   const fetchData = async () => {
     try {
       const data = await getData("/chat/read");
-      console.log(data);
       if (data.status !== "error") setMessages(data);
     } catch (error) {
       console.error("Error get message: ", error);

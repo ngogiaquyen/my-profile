@@ -6,12 +6,15 @@ import PostItem from "./PostItem";
 
 const cx = classNames.bind(styles);
 
-function PostList({ posts }) {
+function PostList({ title="Bài viết", type="row", posts }) {
   return (
     <div className={cx("post-container")}>
-      {posts.map((post) => (
-        <PostItem post={post} />
-      ))}
+      <h2 className={cx('title')}>{title}</h2>
+      <div className={cx("post-list", {col: type === "col"})}>
+        {posts.map((post) => (
+          <PostItem post={post} />
+        ))}
+      </div>
     </div>
   );
 }

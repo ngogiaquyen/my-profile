@@ -2,7 +2,17 @@
 require_once 'app/App.php';
 
 session_start();
-header("Access-Control-Allow-Origin: http://localhost:3000");
+
+$allowed_origins = [
+    "https://ngogiaquyen.id.vn",
+    "http://localhost:3000"
+];
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+}
+
+// header("Access-Control-Allow-Origin: https://ngogiaquyen.id.vn/");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");

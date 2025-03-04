@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 
 export function useMergedRef(...refs) {
-    console.log("merd: ", refs);
   return useCallback(
     (element) => {
       refs.forEach((ref) => {
