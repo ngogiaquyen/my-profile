@@ -33,7 +33,7 @@ const navs = [
   },
 ];
 
-function NavBar() {
+function NavBar({fixed = true, col,transparent}) {
   const { scrollDirection, setScrollDirection } = useContext(ScrollEventContext);
 
   const { navIndexActive, setNavIndexActive } = useContext(NavbarInforContext);
@@ -55,16 +55,16 @@ function NavBar() {
   }, [scrolledPast]);
 
   return (
-    <nav className={cx('navbar')} ref={refNav}>
+    <nav className={cx('navbar', {transparent: transparent})} ref={refNav}>
       <div
         className={cx('navbar-container', {
-          pin: isPin,
+          pin: isPin && fixed,
           // bound: bound,
           show: scrollDirection === 'up',
           hide: scrollDirection === 'down',
         })}
       >
-        <ul className={cx('navbar-menu')}>
+        <ul className={cx('navbar-menu', {col: col})}>
           {navs.map((nav, index) => (
             <li className={cx('navbar-item')}>
               <NavLink

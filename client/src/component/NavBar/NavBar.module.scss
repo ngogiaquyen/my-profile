@@ -4,6 +4,14 @@
   border-radius: var(--border-radius-px);
   background-color: var(--bgr-color);
   overflow:hidden;
+
+  &.transparent{
+    background-color: transparent;
+    
+    .navbar-container {
+      background-color: transparent;
+    }
+  }
 }
 
 // .navbar:not(.fixed).bound.hide{
@@ -39,6 +47,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.navbar-menu.col{
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
 }
 .navbar-item + .navbar-item {
   margin-top: 0;

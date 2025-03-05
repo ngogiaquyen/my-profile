@@ -1,18 +1,47 @@
 import classNames from 'classnames/bind';
 import styles from './CvPage.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCheck, faDownload, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { NavLink } from 'react-router-dom';
 import { Progress } from '~/assets/svg';
+import image from '~/assets/image.png';
+import { useState } from 'react';
+import Line from './components/Line';
+import SkillItem from './components/SkillItem';
+import ProjectItem from '~/component/ProjectItem';
+import ProjectList from '~/component/ProjectItem/ProjectList';
+import NavBar from '~/component/NavBar';
 
 const cx = classNames.bind(styles);
 
 function CvPage() {
+  const [isShowBar, setIsShowBar] = useState(true);
+  const handleShowBar = () => {
+    setIsShowBar((prev) => {
+      if (!prev) setIsExpandMenu(false);
+      return !prev;
+    });
+  };
+
+  const [isExpandMenu, setIsExpandMenu] = useState(null);
+
+  const handleExpandMenu = ()=>{
+    setIsExpandMenu((prev) => {
+      if(!prev) return true;
+      return false;
+    })
+  }
+
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('info-bar')}>
+      {/* bar */}
+      <div className={cx('top-bar')}></div>
+      <div className={cx('info-bar', { show: isShowBar, hide: !isShowBar })}>
         <div className={cx('info-bar-frame')}>
+          <divc className={cx('info-bar-header')}>
+            <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} onClick={handleShowBar} />
+          </divc>
           <div className={cx('info-head')}>
             <img
               className={cx('info-img')}
@@ -22,6 +51,7 @@ function CvPage() {
             <p className={cx('info-text')}>Front-end Deweloper Ui/UX Designer</p>
           </div>
 
+          <Line />
           <div className={cx('info-table')}>
             <ul className={cx('table-list')}>
               <li className={cx('table-item')}>
@@ -39,20 +69,15 @@ function CvPage() {
             </ul>
           </div>
 
+          <Line />
+
           <div className={cx('lang-skills')}>
-            <div className={cx('skills-item')}>
-              <Progress />
-              <h6>English</h6>
-            </div>
-            <div className={cx('skills-item')}>
-              <Progress />
-              <h6>English</h6>
-            </div>
-            <div className={cx('skills-item')}>
-              <Progress />
-              <h6>English</h6>
-            </div>
+            <SkillItem title="English" />
+            <SkillItem title="English" />
+            <SkillItem title="English" />
           </div>
+
+          <Line />
 
           <div className={cx('code-skills')}>
             <div className={cx('code-item')}>
@@ -78,6 +103,8 @@ function CvPage() {
             </div>
           </div>
 
+          <Line />
+
           <div className={cx('knowledge')}>
             <div className={cx('knowledge-item')}>
               <FontAwesomeIcon className={cx('icon')} icon={faCheck} />
@@ -88,6 +115,8 @@ function CvPage() {
               <span>SASS</span>
             </div>
           </div>
+
+          <Line />
 
           <div className={cx('download-cv')}>
             <span>DOWNLOAD CV</span>
@@ -103,20 +132,18 @@ function CvPage() {
           </div>
         </div>
       </div>
+
+      <div className={cx('overlay', { show: isShowBar })} onClick={handleShowBar}></div>
+
+      {/* container */}
       <div className={cx('container')}>
         <div className={cx('banner')}>
           <h5>Discover my Amazing Art Space!</h5>
-          <span>
-            "Frontend Developer để phát triển kỹ năng về React.js và UI/UX."
-          </span>
+          <span>"Frontend Developer để phát triển kỹ năng về React.js và UI/UX."</span>
         </div>
 
         <div className={cx('couter')}>
           <div className={cx('couter-list')}>
-            <div className={cx('counter-item')}>
-              <span>2+</span>
-              <h6>Years Experience</h6>
-            </div>
             <div className={cx('counter-item')}>
               <span>2+</span>
               <h6>Years Experience</h6>
@@ -138,24 +165,16 @@ function CvPage() {
 
         <div className={cx('projects')}>
           <h2>My projects</h2>
-          <div className={cx('project-list')}>
-            <div className={cx('project-item')}>
-              <h6>Web Development</h6>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse</span>
-              <NavLink to={''}>Visit now</NavLink>
-            </div>
-            <div className={cx('project-item')}>
-              <h6>Web Development</h6>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse</span>
-              <NavLink to={''}>Visit now</NavLink>
-            </div>
-            <div className={cx('project-item')}>
-              <h6>Web Development</h6>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse</span>
-              <NavLink to={''}>Visit now</NavLink>
-            </div>
-          </div>
+          <ProjectList />
         </div>
+      </div>
+
+      {/* menu */}
+      <div className={cx('menu', { expand: isExpandMenu, marrow: !isExpandMenu && isExpandMenu !== null })}>
+        <div className={cx('menu-bars')} onClick={handleExpandMenu}>
+          <FontAwesomeIcon className={cx('bar-icon')} icon={faBars} />
+        </div>
+        <div className={cx('navbar', { show: isExpandMenu })}>{<NavBar col transparent fixed={false} />}</div>
       </div>
     </div>
   );

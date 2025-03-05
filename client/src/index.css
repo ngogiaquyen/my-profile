@@ -26,6 +26,8 @@
 
   /* // width */
   --sidebar-width: 240px;
+
+  --info-bar-width: 290px;
   /* // font */
 
   --font-family: 'TikTokFont', sans-serif;
