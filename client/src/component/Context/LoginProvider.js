@@ -14,6 +14,7 @@ function LoginProvider({ children }) {
       const res = await getData("/login/check");
       if (res.is_login) {
         setloginStatus(res.user_id);
+        console.log(res.is_login)
       } else {
         setModalComponentContent(<LoginForm />);
       }

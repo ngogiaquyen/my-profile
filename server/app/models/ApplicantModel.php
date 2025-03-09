@@ -43,4 +43,5 @@ class ApplicantModel extends Model
         $conditions = "id=$id";
         return $this->update('applicants', $data, $conditions);
     }
+
 }

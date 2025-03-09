@@ -7,11 +7,14 @@ import ChatAdmin from '../component/Chat/ChatUser';
 import routes from '../configs';
 import HomeLayout from '../Layouts/HomeLayout';
 import MessageBoard from '../component/MessageBoard';
-import PostDetail from '~/component/PostDetail';
 import HeaderOnly from '~/Layouts/HeaderOnly';
 import PostDetailPage from '~/page/PostDetailPage/PostDetailPage';
 import CvPage from '~/page/CvPage';
 import EmptyLayout from '~/Layouts/EmptyLayout';
+import AdminPage from '~/page/AdminPage';
+import FlashCard from '~/component/FlashCardList/FlashCard';
+import FlashCardPage from '~/page/FlashCardPage';
+import CreatePostPage from '~/page/CreatePostPage';
 
 export const publicRouters = [
   {
@@ -37,16 +40,16 @@ export const publicRouters = [
   {
     component: Chat,
     path: routes.chat,
-    layout: HomeLayout,
+    layout: HeaderOnly,
   },
   {
     component: ChatAdmin,
     path: routes.chatadmin,
-    layout: HomeLayout,
+    layout: HeaderOnly,
   },
   {
     component: PostDetailPage,
-    path: routes.postDetail,
+    path: routes.postDetail + "/:id",
     layout: HeaderOnly,
   },
   {
@@ -58,6 +61,21 @@ export const publicRouters = [
     component: CvPage,
     path: routes.cV,
     layout: EmptyLayout,
+  },
+  {
+    component: AdminPage,
+    path: routes.admin,
+    layout: EmptyLayout,
+  },
+  {
+    component: FlashCardPage,
+    path: routes.flashCard,
+    layout: HeaderOnly,
+  },
+  {
+    component: CreatePostPage,
+    path: routes.createPost,
+    layout: HeaderOnly,
   },
 ];
 

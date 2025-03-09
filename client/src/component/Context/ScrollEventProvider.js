@@ -19,18 +19,15 @@ function ScrollEventProvider({ children }) {
       }
       const currentScrollY = window.scrollY;
       const scrollThreshold = 600; 
-      
       if (currentScrollY > lastScrollY && rectbottom.top < -200) {
         setScrollDirection("down");
         lastScrollY = currentScrollY;
-      } else if (currentScrollY < lastScrollY - scrollThreshold) {
-        console.log("hh")
+      } else if ( currentScrollY < lastScrollY - scrollThreshold) {
         setScrollDirection("up");
         lastScrollY = currentScrollY;
       }else if(currentScrollY > lastScrollY){
         setScrollDirection(null);
       }
-      if(rectbottom.top < -200) console.log("ok")
     };
 
     window.addEventListener("scroll", handleScroll);

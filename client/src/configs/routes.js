@@ -8,5 +8,8 @@ const routes = {
   postDetail: "/post-detail",
   temp: "/temp",
   cV: "/my-cv",
+  admin: "/admin-page",
+  flashCard: "/flash-card",
+  createPost: "/create-post",
 };
 export default routes;

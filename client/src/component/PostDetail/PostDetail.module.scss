@@ -3,20 +3,21 @@
   justify-content: center;
   padding: 10px 0;
   gap: 10px;
+  max-height: 500px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .wrapper {
     flex-direction: column;
-    &>div{
+
+    max-height: unset;
+    & > div {
       width: 100%;
     }
   }
-
 }
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .wrapper {
     flex-direction: column;
   }
-
 }

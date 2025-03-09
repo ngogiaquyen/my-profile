@@ -88,6 +88,7 @@ function checkLogin($conn)
     if (!isset($_SESSION['user_id'])) {
         if (!isset($_COOKIE['user_id'])) {
             handleError("Bạn chưa đăng nhập");
+            return false;
         }
 
         // Kiểm tra user_id trong database
@@ -97,7 +98,8 @@ function checkLogin($conn)
 
         if (!$user) {
             http_response_code(403); // Forbidden
-            return ["error" => "Người dùng không hợp lệ"];
+            handleError("Người dùng không hợp lệ");
+            return false;
         }
 
         // Gán user_id vào session

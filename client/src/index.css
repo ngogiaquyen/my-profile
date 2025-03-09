@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root {
   --border-radius-px: 10px;
   --bgr-color: #fff;
-  
+
   --white-color: #fff;
   --black-color: #000;
   --header-color: #0074e9;
@@ -131,15 +131,18 @@ body {
   background-color: rgb(31, 31, 31);
 }
 
-
-
 html {
   font-size: 62.5%;
 }
 
-ul, li{
+ul,
+li {
   list-style: none;
   padding: 0;
+}
+
+a {
+  color: var(--text-color);
 }
 
 html *::-webkit-scrollbar {

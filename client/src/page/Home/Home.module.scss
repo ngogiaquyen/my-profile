@@ -1,8 +1,13 @@
 .homepage {
   max-width: 100vw;
+  // width: 1200px;
+  margin: 0 auto;
   // margin: 0 auto;
-  padding: 10px 20px;
-  font-family: "Roboto", sans-serif; /* Modern font */
-  background-color: #1f1f1f; /* Dark background */
-  color: #333; /* Dark text color */
+  // padding: 10px 20px;
+  font-family: 'Roboto', sans-serif; /* Modern font */
+  background-color: var(--content-bg-color);
+
+  & > div {
+    margin-top: 20px;
+  }
 }

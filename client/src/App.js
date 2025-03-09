@@ -1,13 +1,15 @@
-import React, { Fragment, useContext } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./component/NavBar";
-import ModalOverLay from "./component/ModalOverLay";
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import ModalOverLay from './component/ModalOverLay';
 
-import "./App.css";
-import EmptyLayout from "./Layouts/EmptyLayout";
-import { publicRouters } from "./routes/routes";
+import './App.css';
+import EmptyLayout from './Layouts/EmptyLayout';
+import { publicRouters } from './routes/routes';
+import { useLoading } from './component/Context/LoadingProvider';
+import Toast from './component/Toast';
 
 function App() {
+  const { loading, setLoading } = useLoading();
 
   return (
     <Router>
@@ -36,16 +38,8 @@ function App() {
             );
           })}
         </Routes>
-        {/* 
-        // <Route path="/" element={<Home ref={ref} bound={bound} />} />
-        //   <Route path="/profile" element={<Profile />} />
-        //   <Route path="/projects" element={<Projects />} />
-        //   <Route path="/stories" element={<Stories />} />
-        //   <Route path="/chat" element={<Chat />} />
-        //   <Route path="/temp" element={<ThreePicture />} />
-        //   <Route path="/chatadmin" element={<ChatAdmin />} />
-        // */}
         <ModalOverLay />
+        <Toast />
       </div>
     </Router>
   );

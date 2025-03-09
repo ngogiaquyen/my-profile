@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './NavBar.module.scss';
 import avatar from '~/assets/avatar.png'; // Import avatar image
 import { ScrollEventContext } from '../Context/ScrollEventProvider';
-import { useScrolledPastComponent } from '~/hooks/useScrolledPastComponent';
-import { faL } from '@fortawesome/free-solid-svg-icons';
-import { NavbarScrollContext } from '../Context/NavbarScrollProvider';
 import { NavbarInforContext } from '../Context/NavbarInforPrivider';
 import { scrollToBottom } from '~/helper/scroll';
 import { ScrolledPastContext } from '../Context/ScrolledPastProvder';
@@ -33,46 +30,45 @@ const navs = [
   },
 ];
 
-function NavBar({fixed = true, col,transparent}) {
-  const { scrollDirection, setScrollDirection } = useContext(ScrollEventContext);
+function NavBar({ fixed = true, col, transparent }) {
+  const { scrollDirection } = useContext(ScrollEventContext);
 
   const { navIndexActive, setNavIndexActive } = useContext(NavbarInforContext);
 
-  const { refNav, bottomCompRef, isPin, setIsPin, scrolledPast } = useContext(ScrolledPastContext);
+  const { refNav, isPin, setIsPin } = useContext(ScrolledPastContext);
+
+  const [fobiden] = useState(false);
 
   const handleClickItemNav = (index) => {
     setNavIndexActive(index);
-    console.log('hello');
     setIsPin(false);
+    // setForbiden(true);
+
     setTimeout(() => {
       scrollToBottom(refNav);
+      // setForbiden(false);
     }, 200);
   };
 
-  useEffect(() => {
-    // console.log(refNav);
-    // console.log(scrolledPast);
-  }, [scrolledPast]);
-
   return (
-    <nav className={cx('navbar', {transparent: transparent})} ref={refNav}>
+    <nav className={cx('navbar', { transparent: transparent })} ref={refNav}>
       <div
         className={cx('navbar-container', {
           pin: isPin && fixed,
           // bound: bound,
           show: scrollDirection === 'up',
-          hide: scrollDirection === 'down',
+          hide: scrollDirection === 'down' && !fobiden,
         })}
       >
-        <ul className={cx('navbar-menu', {col: col})}>
+        <ul className={cx('navbar-menu', { col: col })}>
           {navs.map((nav, index) => (
-            <li className={cx('navbar-item')}>
+            <li className={cx('navbar-item')} key={index}>
               <NavLink
                 to={nav.to}
                 className={cx('navbar-link', { active: navIndexActive === index })}
                 onClick={() => handleClickItemNav(index)}
               >
-                <img src={avatar} />
+                <img alt="" src={avatar} />
                 <span className={cx('navbar-item-text')}>{nav.title}</span>
               </NavLink>
             </li>

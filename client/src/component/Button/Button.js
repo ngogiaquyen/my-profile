@@ -10,7 +10,7 @@ function Button({children, onClick}) {
         className={cx("btn", "comment-btn")}
         onClick={onClick}
       >
-        Comment
+        {children || "Submit"}
       </button> );
 }
 

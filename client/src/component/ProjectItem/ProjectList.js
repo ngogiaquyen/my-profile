@@ -15,7 +15,7 @@ function ProjectList() {
     <ProjectItem/>
     <ProjectItem/>
     <div className={cx('project-item')}>
-      <img src={image} />
+      <img alt="" src={image} />
       <h6>Web Development</h6>
       <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse</span>
       <NavLink className={cx('link')} to={''}>

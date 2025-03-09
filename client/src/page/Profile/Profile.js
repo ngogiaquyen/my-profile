@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Profile() {
-    const [image, setImage] = useState(null);
-
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
-    };
-
-    const handleUpload = () => {
-    //     const formData = new FormData();
-    //     formData.append('image', image);
-
-    //     axios.post('http://localhost:8000/upload', formData)
-    //         .then(response => {
-    //         })
-    //         .catch(error => {
-    //             console.error('There was an error uploading the image!', error);
-    //         });
-    };
+    // const [image, setImage] = useState(null);
 
     return (
         <div>
-            <h1>Profile Page</h1>
+            {/* <h1>Profile Page</h1>
             <input type="file" onChange={handleImageChange} />
-            <button onClick={handleUpload}>Upload Image</button>
+            <button onClick={handleUpload}>Upload Image</button> */}
         </div>
     );
 }

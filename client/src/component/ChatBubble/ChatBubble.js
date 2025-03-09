@@ -16,7 +16,7 @@ const ChatBubble = ({ user, onClick }) => {
     >
       <div className={cx("avatar")}>
         {/* {user.avatar ? (
-          <img src={user.avatar} alt={user.name} />
+          <img alt="" src={user.avatar} alt={user.name} />
         ) : (
         )} */}
         <span className={cx("initial")}>{user.id}</span>

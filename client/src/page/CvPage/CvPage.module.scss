@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   display: flex;
   padding: 15px;
   background-color: #191923;
@@ -176,8 +177,18 @@
 
 // knowledge
 .knowledge {
+  display: flex;
+  flex-direction: column;
   padding-top: 15px;
   padding-bottom: 16px;
+}
+
+.knowledge-title{
+  text-align: start;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 .knowledge-item {
@@ -322,9 +333,13 @@
   border-radius: 4px;
   width: 80px;
 
-  transition: width 0.2s linear;
+  &.marrow {
+    animation: hideMenu 0.2s linear forwards;
+  }
+
   &.expand {
-    width: 240px;
+    // width: 240px;
+    animation: showMenu 0.2s linear forwards;
 
     .menu-bars {
       justify-content: flex-start;
@@ -345,6 +360,7 @@
   align-items: center;
   height: 80px;
   height: 80px;
+  z-index: 10;
   // padding: 30px;
   background-color: #2e2e3e52;
   &:hover {
@@ -359,7 +375,7 @@
   padding: 30px;
 }
 
-@media (max-width: 880px) {
+@media (max-width: 900px) {
   .wrapper {
     flex-direction: column;
     padding: 0;
@@ -374,7 +390,7 @@
     left: -290px;
     height: 100vh;
 
-    .hide {
+    &.hide {
       animation: hideBar 0.5s ease-in-out forwards;
     }
 
@@ -444,13 +460,17 @@
     right: 0px;
     top: 0;
     bottom: 0;
-    width: 0;
+    // width: 0;
+    // overflow: hidden;
 
+    right: -80px;
+    // width: 80px;
     .menu-bars {
+      // position: absolute;
       height: 52px;
       background-color: transparent;
-      // transform: translateX(-80px);
-      animation: unPinIconMenu 0.5s linear forwards;
+      
+    transform: translateX(-80px);
     }
 
     .bar-icon {
@@ -458,14 +478,17 @@
     }
     &.expand {
       // width: 240px;
-      animation: showMenu 0.5s linear forwards;
+      animation: showMenu 0.2s linear forwards;
       .menu-bars {
-        animation: pinIconMenu 0.5s linear forwards;
-        // transform: translateX(0px);
+        animation: pinIconMenu 0.2s linear forwards;
       }
     }
     &.marrow {
-      animation: hideMenu 0.5s linear forwards;
+      animation: hideMenu 0.2s linear forwards;
+
+      .menu-bars {
+        animation: unPinIconMenu 0.2s linear forwards;
+      }
     }
   }
 }
@@ -489,20 +512,40 @@
   }
 }
 
-@keyframes showMenu {
+@keyframes showMenu2 {
   0% {
-    width: 0;
+    width: 80px;
   }
   100% {
     width: 240px;
   }
 }
-@keyframes hideMenu {
+@keyframes hideMenu2 {
   0% {
     width: 240px;
   }
   100% {
-    width: 0;
+    width: 80px;
+  }
+}
+@keyframes showMenu {
+  0% {
+    right: -80px;
+    width: 80px;
+  }
+  100% {
+    right: 0;
+    width: 240px;
+  }
+}
+@keyframes hideMenu {
+  0% {
+    right: 0;
+    width: 240px;
+  }
+  100% {
+    right: -80px;
+    width: 80px;
   }
 }
 
@@ -531,11 +574,11 @@
 
 @keyframes pinIconMenu {
   0% {
-    transform: translateX(-70px);
+    transform: translateX(-80px);
   }
-  10% {
-    transform: translateX(-60px);
-  }
+  // 10% {
+  //   transform: translateX(-60px);
+  // }
   100% {
     transform: translateX(0);
   }
@@ -544,10 +587,10 @@
   0% {
     transform: translateX(0);
   }
-  80% {
-    transform: translateX(-50px);
-  }
+  // 80% {
+  //   transform: translateX(-50px);
+  // }
   100% {
-    transform: translateX(-70px);
+    transform: translateX(-80px);
   }
 }

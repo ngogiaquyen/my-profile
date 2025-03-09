@@ -16,7 +16,7 @@ function ScrolledPastProvder({ children }) {
         const rectBottom = bottomCompRef.current?.getBoundingClientRect();
 
         // setScrolledPast(rectNav.top <= 0 && rectBottom.top <= 0); // Kiểm tra nếu component ra khỏi màn hình trên
-        setIsPin(rectNav.top <= 0);
+        setIsPin(rectNav.top < 0);
         setScrolledPast(rectNav.top <= 0); // Kiểm tra nếu component ra khỏi màn hình trên
 
       }

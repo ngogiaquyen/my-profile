@@ -1,8 +1,7 @@
 import classNames from "classnames/bind";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Chat.module.scss";
 import { getData, postData } from "~/helper/apiService";
-import { ModalOverLayContext } from "../Context/ModalOverLayProvider";
 import Chat from "./Chat";
 
 const cx = classNames.bind(styles);
@@ -12,7 +11,6 @@ function ChatAdmin() {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
   const [usernames, setUsernames] = useState([]);
-  const { setModalComponentContent } = useContext(ModalOverLayContext);
 
   const readUser = async () => {
     try {

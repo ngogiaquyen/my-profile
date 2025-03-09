@@ -1,8 +1,9 @@
 .navbar {
+  position: relative;
   width: 100%;
   min-height: 50px;
   border-radius: var(--border-radius-px);
-  background-color: var(--bgr-color);
+  background-color: var(--content-bg-color);
   overflow:hidden;
 
   &.transparent{
@@ -25,7 +26,7 @@
   z-index: 99;
 }
 .navbar-container {
-  background-color: var(--bgr-color);
+  background-color: var(--content-bg-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.44); /* Subtle shadow */
   z-index: 99;
 }
@@ -153,13 +154,13 @@
     transform: translate(0%, -100%);
   }
   to {
-    transform: translate(0%, 0);
+    transform: translate(0%, -1px);
   }
 }
 
 @keyframes slideOutTop {
   from {
-    transform: translate(0%, 0);
+    transform: translate(0%, -1px);
   }
   to {
     transform: translate(0%, -100%);
