@@ -7,9 +7,10 @@ import EmptyLayout from './Layouts/EmptyLayout';
 import { publicRouters } from './routes/routes';
 import { useLoading } from './component/Context/LoadingProvider';
 import Toast from './component/Toast';
+import Loader from './component/Loader';
 
 function App() {
-  const { loading, setLoading } = useLoading();
+  const { loading, setLoading, loadingCount } = useLoading();
 
   return (
     <Router>
@@ -40,6 +41,7 @@ function App() {
         </Routes>
         <ModalOverLay />
         <Toast />
+        {loadingCount !== 0 &&  <Loader />}
       </div>
     </Router>
   );

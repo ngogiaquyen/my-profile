@@ -15,6 +15,7 @@ import AdminPage from '~/page/AdminPage';
 import FlashCard from '~/component/FlashCardList/FlashCard';
 import FlashCardPage from '~/page/FlashCardPage';
 import CreatePostPage from '~/page/CreatePostPage';
+import ProjectDetailPage from '~/page/ProjectDetailPage/ProjectDetailPage';
 
 export const publicRouters = [
   {
@@ -75,6 +76,11 @@ export const publicRouters = [
   {
     component: CreatePostPage,
     path: routes.createPost,
+    layout: HeaderOnly,
+  },
+  {
+    component: ProjectDetailPage,
+    path: routes.projectDetail,
     layout: HeaderOnly,
   },
 ];

@@ -36,11 +36,11 @@ function SocialProfile() {
           </div>
         </div>
         <div className={cx('social-links')}>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/ngogiaquyen" target="_blank" rel="noopener noreferrer">
             {/* <img src={githubIcon} alt="GitHub" className={cx("social-icon")} /> */}
             <FaGithub className={cx("social-icon", "github")} />
           </a>
-          <a href="https://www.linkedin.com/in/yourusername/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/quyen-ngo-gia" target="_blank" rel="noopener noreferrer">
             {/* <img
               src={linkedinIcon}
               alt="LinkedIn"
@@ -48,7 +48,7 @@ function SocialProfile() {
             /> */}
             <FaLinkedin className={cx("social-icon")} />
           </a>
-          <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/share/165jkkeQ9a/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
             {/* <img src={facebookIcon} alt="facebook" className={cx('social-icon')} /> */}
             <FaFacebook className={cx("social-icon")} />
           </a>

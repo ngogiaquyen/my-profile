@@ -11,5 +11,6 @@ const routes = {
   admin: "/admin-page",
   flashCard: "/flash-card",
   createPost: "/create-post",
+  projectDetail: "/project-detail",
 };
 export default routes;

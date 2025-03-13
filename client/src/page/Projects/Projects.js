@@ -26,17 +26,6 @@ function Projects() {
   return (
     <div className="project-container">
       <ProjectList />
-      {/* {projects.map(project => (
-                <div key={project.id} className="project-card">
-                    <img alt="" src={project.image} alt={project.name} className="project-image"/>
-                    <h2>{project.name}</h2>
-                    <p>{project.description}</p>
-                    <div className="project-links">
-                        <a href={project.url} target="_blank" rel="noopener noreferrer">View Project</a>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </div>
-                </div>
-            ))} */}
     </div>
   );
 }

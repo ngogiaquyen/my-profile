@@ -5,12 +5,13 @@ import PostItem from "./PostItem";
 
 const cx = classNames.bind(styles);
 
-function PostList({ title="Bài viết", type="row", posts =[] }) {
+function PostList({ title="Bài viết", type="row", posts = [] }) {
+  console.log(posts)
   return (
     <div className={cx("post-container")}>
       <h2 className={cx('title')}>{title}</h2>
       <div className={cx("post-list", {col: type === "col"})}>
-        {posts.map((post, index) => (
+        {posts && posts.map((post, index) => (
           <PostItem key={index} post={post} />
         ))}
       </div>

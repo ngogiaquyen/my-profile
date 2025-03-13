@@ -28,9 +28,12 @@ class Post extends Controller
         // Kiểm tra xem tệp ảnh có tồn tại trong yêu cầu hay không
         if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
             // Đặt tên tệp duy nhất để tránh ghi đè
-            $targetDir = "uploads/";
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/uploads/";
             $fileName = basename($_FILES['img']['name']);
-            $targetFilePath = $targetDir . uniqid() . "_" . $fileName;
+            $newFileName = uniqid() . "_" . $fileName;
+            $targetFilePath = $targetDir . $newFileName;
+
+            $targetSave = "uploads/" . $newFileName;
 
             // Kiểm tra và tạo thư mục nếu chưa tồn tại
             if (!is_dir($targetDir)) {
@@ -43,7 +46,7 @@ class Post extends Controller
                 $data = [
                     'title' => $_POST['title'],
                     'content' => $_POST['content'],
-                    'img' => $targetFilePath
+                    'img' => $targetSave
                 ];
 
                 if ($this->model1->createPost($data)) {

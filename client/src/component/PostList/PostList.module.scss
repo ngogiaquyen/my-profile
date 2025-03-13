@@ -45,7 +45,7 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s, box-shadow 0.3s;
   z-index: 4;
-  max-height: calc(100vh - var(--nav-height));
+  // max-height: calc(100vh - var(--nav-height));
 }
 
 .controller {
@@ -122,15 +122,21 @@ a {
 .post-image-wrapper {
   aspect-ratio: 1 / 1;
   width: 100%;
+  max-width: max(320px, 100%) ;
   box-shadow: 0 4px 6px #ffffff3b;
+  border-radius: var(--border-radius-px);
+  overflow: hidden;
 }
 .post img {
-  max-width: 100%;
-  height: auto;
-  max-height: 500px;
-  border-radius: var(--border-radius-px); /* Rounded corners for images */
+  // width: 320px;
+  // height: 320px;
+  // max-height: 100%;
+  // max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
 .comment-section {
   margin-top: 15px;
 }

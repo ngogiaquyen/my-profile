@@ -29,21 +29,19 @@ const Footer = () => {
         {/* Cột 3: Liên hệ */}
         <div className={cx('column')}>
           <h3>Liên hệ</h3>
-          <p>📍 Địa chỉ: 123 Đường ABC, Quận XYZ, HCM</p>
-          <p>📧 Email: contact@ngogiaquyen.com</p>
-          <p>📞 Điện thoại: 0123-456-789</p>
+          <p>📍 Địa chỉ: 123 Đường ABC, Quận XYZ, Thái Nguyên</p>
+          <p>📧 Email: ngogiaquyendhtn223@gmail.com</p>
+          <p>📞 Điện thoại: 0356197132</p>
         </div>
 
         {/* Cột 4: Mạng xã hội */}
         <div className={cx('column', 'socialIcons')}>
           <h3>Kết nối với tôi</h3>
           <div className={cx('icons')}>
-            <a href="#"><FaFacebook /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaGithub /></a>
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaTiktok /></a>
+            <a href="https://www.facebook.com/share/165jkkeQ9a/?mibextid=wwXIfr" target='_blank'><FaFacebook /></a>
+            <a href="https://github.com/ngogiaquyen"  target='_blank'><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/quyen-ngo-gia"  target='_blank'><FaLinkedin /></a>
+            <a href="https://www.tiktok.com/@qngok4"  target='_blank'><FaTiktok /></a>
           </div>
         </div>
       </div>

@@ -1,10 +1,8 @@
 import classNames from 'classnames/bind';
 import styles from './ThreePicture.module.scss';
-import avatar from '~/assets/avatar.png'; // Import avatar image
 import imgright from '~/assets/imgtopgroup.jpg'; // Import avatar image
-import imgright2 from '~/assets/IMG_0085.jpg'; // Import avatar image
 import imgright3 from '~/assets/FB_IMG_1691804982776.jpg'; // Import avatar image
-import imgright4 from '~/assets/IMG1234.jpg'; // Import avatar image
+import imgright4 from '~/assets/IMG_988.jpg'; // Import avatar image
 
 const cx = classNames.bind(styles);
 

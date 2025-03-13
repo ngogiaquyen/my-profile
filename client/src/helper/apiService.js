@@ -1,7 +1,5 @@
 // apiService.js
 
-import { useLoading } from '~/component/Context/LoadingProvider';
-
 // export const BASE_URL = 'http://localhost/my-profile/server';
 export const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 export const BASE_URL_IMG = process.env.REACT_APP_BASE_IMG_URL;
