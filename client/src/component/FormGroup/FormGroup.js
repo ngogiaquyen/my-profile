@@ -40,7 +40,7 @@ function FormGroup({ type = 'text', title, value: _value = '', row, col, placeho
     );
 
     const formattedString = Object.entries(formattedData)
-      .map(([key, value]) => `${key}: ${value}`)
+      .map(([key, value]) => `${key}/: ${value}`)
       .join('\\n');
 
     setValue(formattedString);
@@ -52,7 +52,7 @@ function FormGroup({ type = 'text', title, value: _value = '', row, col, placeho
     const newTableData = {};
 
     lines.forEach((line, index) => {
-      const [key, value] = line.split(':').map((item) => item.trim()); // Tách key và value
+      const [key, value] = line.split('/:').map((item) => item.trim()); // Tách key và value
       if (key && value) {
         newTableData[index] = { key, value }; // Lưu vào tableData
       }

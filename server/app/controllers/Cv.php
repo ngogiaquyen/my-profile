@@ -44,9 +44,12 @@ class Cv extends Controller
         // Kiểm tra xem tệp ảnh có tồn tại trong yêu cầu hay không
         if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
             // Đặt tên tệp duy nhất để tránh ghi đè
-            $targetDir = "uploads/";
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/uploads/";
             $fileName = basename($_FILES['avatar']['name']);
-            $targetFilePath = $targetDir . uniqid() . "_" . $fileName;
+            $newFileName = uniqid() . "_" . $fileName;
+            $targetFilePath = $targetDir . $newFileName;
+
+            $targetSave = "uploads/" . $newFileName;
 
             // Kiểm tra và tạo thư mục nếu chưa tồn tại
             if (!is_dir($targetDir)) {
@@ -56,7 +59,7 @@ class Cv extends Controller
             // Di chuyển tệp ảnh đến thư mục đích
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $targetFilePath)) {
                 // Lưu đường dẫn ảnh vào cơ sở dữ liệu
-                $data['avatar'] = $targetFilePath;
+                $data['avatar'] = $targetSave;
 
                 // kiểm tra xem có cv chưa
 

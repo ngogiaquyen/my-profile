@@ -9,6 +9,9 @@ import SkillItem from './components/SkillItem';
 import ProjectList from '~/component/ProjectItem/ProjectList';
 import NavBar from '~/component/NavBar';
 import { BASE_URL_IMG, getData } from '~/helper/apiService';
+import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin, FaVoicemail } from 'react-icons/fa';
+import VideoCard from '~/component/VideoCard';
+import images from '~/assets';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +19,7 @@ function CvPage() {
   const [isShowBar, setIsShowBar] = useState(true);
   const [information, setInformation] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [educations, setEducations] = useState([]);
 
   const handleShowBar = () => {
     setIsShowBar((prev) => {
@@ -52,6 +56,7 @@ function CvPage() {
     console.log(res);
     setInformation(parseStringToTable(res[0].information));
     setSkills(parseSkills(res[0].skills));
+    setEducations(parseSkills(res[0].education));
   };
 
   const parseStringToTable = (inputString) => {
@@ -59,7 +64,7 @@ function CvPage() {
     const newTableData = [];
 
     lines.forEach((line, index) => {
-      const [key, value] = line.split(':').map((item) => item.trim()); // Tách key và value
+      const [key, value] = line.split('/:').map((item) => item.trim()); // Tách key và value
       if (key && value) {
         newTableData.push({ key, value }); // Lưu vào tableData
       }
@@ -136,18 +141,16 @@ function CvPage() {
 
           <div className={cx('knowledge')}>
             {skills.map((line, index) => {
-              if(line.startsWith("#")){
-                return <h5 className={cx('knowledge-title')}>{line.replaceAll("#", "")}</h5>
+              if (line.startsWith('#')) {
+                return <h5 className={cx('knowledge-title')}>{line.replaceAll('#', '')}</h5>;
               }
               return (
                 <div className={cx('knowledge-item')}>
                   <FontAwesomeIcon className={cx('icon')} icon={faCheck} />
                   <span>{line}</span>
                 </div>
-              )
-            }
-            
-            )}
+              );
+            })}
             <div className={cx('knowledge-item')}>
               <FontAwesomeIcon className={cx('icon')} icon={faCheck} />
               <span>SASS</span>
@@ -162,11 +165,22 @@ function CvPage() {
           </div>
 
           <div className={cx('social')}>
+            {/* <FontAwesomeIcon icon={faFacebook} />
             <FontAwesomeIcon icon={faFacebook} />
             <FontAwesomeIcon icon={faFacebook} />
-            <FontAwesomeIcon icon={faFacebook} />
-            <FontAwesomeIcon icon={faFacebook} />
-            <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faFacebook} /> */}
+            <a href="https://github.com/ngogiaquyen" target="_blank">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/quyen-ngo-gia" target="_blank">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:ngogiaquyendhtn223@gmail.com" target="_blank">
+              <FaEnvelope />
+            </a>
+            <a href="https://www.facebook.com/share/165jkkeQ9a/?mibextid=wwXIfr" target="_blank">
+              <FaFacebook />
+            </a>
           </div>
         </div>
       </div>
@@ -176,9 +190,31 @@ function CvPage() {
       {/* container */}
       <div className={cx('container')}>
         <div className={cx('banner')}>
+          <div className={cx('overlay-banner')}></div>
+          <div className={cx('video')}>
+            <VideoCard src={images.bannerVideo} loop />
+          </div>
           {/* <h5>Discover my Amazing Art Space!</h5> */}
           <span>{cvInfo.target}</span>
         </div>
+        <Line />
+        {educations.length === 4 && (
+          <div className={cx('educations')}>
+            <div className={cx('educations-row')}>
+              <h2>{educations[0]}</h2>
+              <p>{educations[1]}</p>
+            </div>
+            <p>
+              <span className={cx('highlight')}>Chuyên ngành: </span>
+              {educations[2]}
+            </p>
+            <p>
+              <span className={cx('highlight')}>GPA: </span>
+              {educations[3]}
+            </p>
+          </div>
+        )}
+        <Line />
 
         {/* <div className={cx('couter')}>
           <div className={cx('couter-list')}>
