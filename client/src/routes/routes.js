@@ -16,6 +16,7 @@ import FlashCard from '~/component/FlashCardList/FlashCard';
 import FlashCardPage from '~/page/FlashCardPage';
 import CreatePostPage from '~/page/CreatePostPage';
 import ProjectDetailPage from '~/page/ProjectDetailPage/ProjectDetailPage';
+import NotePage from '~/page/NotePage/NotePage';
 
 export const publicRouters = [
   {
@@ -80,7 +81,12 @@ export const publicRouters = [
   },
   {
     component: ProjectDetailPage,
-    path: routes.projectDetail,
+    path: routes.projectDetail + "/:id",
+    layout: HeaderOnly,
+  },
+  {
+    component: NotePage,
+    path: routes.notePage,
     layout: HeaderOnly,
   },
 ];

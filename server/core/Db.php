@@ -100,17 +100,6 @@ class Db
                 githublink TEXT
             );
 
-            CREATE TABLE IF NOT EXISTS projects (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                date_create DATETIME,
-                description TEXT,
-                feature TEXT,
-                github VARCHAR(255),
-                img VARCHAR(255),
-                name VARCHAR(100),
-                technology VARCHAR(255)
-            );
-
             CREATE TABLE IF NOT EXISTS language (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(100),
@@ -129,6 +118,16 @@ class Db
                 meaning VARCHAR(100),
                 pinyin VARCHAR(100),
                 examp TEXT,
+                date_create DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS projects (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(100),
+                descriptions TEXT,
+                github_link TEXT,
+                content TEXT,
+                image TEXT,
                 date_create DATETIME DEFAULT CURRENT_TIMESTAMP
             );
         ";

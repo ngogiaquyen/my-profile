@@ -28,9 +28,9 @@ function LoginProvider({ children }) {
   }, []);
 
   return (
-    <LoginContext value={{ loginStatus, setloginStatus }}>
+    <LoginContext.Provider value={{ loginStatus, setloginStatus }}>
       {children}
-    </LoginContext>
+    </LoginContext.Provider>
   );
 }
 

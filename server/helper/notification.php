@@ -1,30 +1,29 @@
-<?php function handleError($message, $keep = false)
+<?php function handleError($message, $value = [])
 {
     echo json_encode([
         'status' => 'error',
         'title' => 'Đã có lỗi xảy ra',
         'content' => $message,
-        'keep' => $keep
+        "data" => $value
     ]);
     exit;
 }
-function handleSuccess($message, $keep = false)
+function handleSuccess($message, $value = [])
 {
     echo json_encode([
         'status' => 'success',
         'title' => 'Thông báo',
         'content' => $message,
-        'keep' => $keep
+        "data" => $value
     ]);
     exit;
 }
-function handleNotify($satus, $title, $message, $keep = false)
+function handleNotify($satus, $title, $message, $value = [])
 {
     echo json_encode([
         'status' => $title ? 'success' : 'error',
         'title' => $title,
-        'content' => $message,
-        'keep' => $keep
+        'content' => $message
     ]);
     exit;
 }

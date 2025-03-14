@@ -108,3 +108,128 @@ function checkLogin($conn)
 
     return true;
 }
+
+
+function uploadImage($inputName, $folder)
+{
+    // Kiểm tra xem có tệp ảnh nào được tải lên không
+    if (!isset($_FILES[$inputName]) || $_FILES[$inputName]['error'] !== UPLOAD_ERR_OK) {
+        handleError('Không có tệp ảnh nào được tải lên hoặc có lỗi trong quá trình tải lên');
+    }
+
+    // Danh sách các loại ảnh hợp lệ
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    $fileType = mime_content_type($_FILES[$inputName]['tmp_name']);
+
+    if (!in_array($fileType, $allowedTypes)) {
+        handleError('Chỉ hỗ trợ JPG, PNG, GIF, WEBP');
+    }
+
+    // Giới hạn kích thước ảnh (tối đa 5MB)
+    $maxSize = 5 * 1024 * 1024; // 5MB
+    if ($_FILES[$inputName]['size'] > $maxSize) {
+        handleError('Kích thước ảnh quá lớn. Giới hạn 5MB');
+    }
+
+    // Đường dẫn thư mục lưu ảnh
+    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/$folder/";
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0755, true);
+    }
+
+    // Đặt tên file mới tránh trùng lặp
+    $fileName = pathinfo($_FILES[$inputName]['name'], PATHINFO_FILENAME);
+    $fileExt = pathinfo($_FILES[$inputName]['name'], PATHINFO_EXTENSION);
+    $newFileName = uniqid() . "_" . preg_replace("/[^a-zA-Z0-9]/", "_", $fileName) . "." . $fileExt;
+    $targetFilePath = $targetDir . $newFileName;
+    $targetSave = "$folder/" . $newFileName;
+
+    // Di chuyển tệp ảnh vào thư mục đích
+    if (!move_uploaded_file($_FILES[$inputName]['tmp_name'], $targetFilePath)) {
+        handleError('Không thể tải tệp ảnh lên, vui lòng thử lại');
+    }
+
+    return ['success' => true, 'img_url' => $targetSave];
+}
+
+function handleLoadImg($folder)
+{
+    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/$folder/";
+
+    // Kiểm tra xem thư mục có tồn tại không
+    if (!is_dir($targetDir)) {
+        return ['success' => false, 'message' => 'Thư mục không tồn tại'];
+    }
+
+    // Lấy danh sách tất cả các tệp trong thư mục
+    $files = array_diff(scandir($targetDir), ['.', '..']);
+
+    // Lọc chỉ lấy các tệp ảnh
+    $imageFiles = [];
+    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+    foreach ($files as $file) {
+        $filePath = $targetDir . $file;
+        $fileExt = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+        if (in_array($fileExt, $allowedTypes) && is_file($filePath)) {
+            $imageFiles[] = "$folder/$file"; // Trả về đường dẫn tương đối
+        }
+    }
+
+    if (empty($imageFiles)) {
+        return ['success' => false, 'message' => 'Không tìm thấy ảnh nào'];
+    }
+
+    return ['success' => true, 'images' => $imageFiles];
+}
+
+function deleteImage($imagePath)
+{
+    $filePath = $_SERVER['DOCUMENT_ROOT'] . "/" . ltrim($imagePath, "/");
+
+    // Kiểm tra xem tệp có tồn tại không
+    if (!file_exists($filePath)) {
+        handleError('Ảnh không tồn tại');
+    }
+
+    // Xóa tệp ảnh
+    if (!unlink($filePath)) {
+        handleError('Không thể xóa ảnh');
+    }
+
+    handleSuccess('Ảnh đã được xóa thành công');
+}
+function copyImage($imagePath, $destinationFolder)
+{
+    $sourcePath = $_SERVER['DOCUMENT_ROOT'] . "/" . ltrim($imagePath, "/");
+    $destinationDir = $_SERVER['DOCUMENT_ROOT'] . "/" . ltrim($destinationFolder, "/");
+    // Kiểm tra xem tệp nguồn có tồn tại không
+    if (!file_exists($sourcePath)) {
+        handleError('Ảnh nguồn không tồn tại');
+    }
+
+    // Kiểm tra và tạo thư mục đích nếu chưa tồn tại
+    if (!is_dir($destinationDir)) {
+        mkdir($destinationDir, 0755, true);
+    }
+
+    // Tạo tên file mới trong thư mục đích
+    $fileName = basename($sourcePath);
+    $newFilePath = $destinationDir . "/" . $fileName;
+    $newFileUrl = $destinationFolder . "/" . $fileName;
+
+    // Thực hiện sao chép tệp
+    if (!copy($sourcePath, $newFilePath)) {
+        handleError('Không thể sao chép ảnh');
+    }
+
+    return ['success' => true, 'new_img_url' => $newFileUrl];
+}
+function extractImageUrls($text)
+{
+    $pattern = '/!\[.*?\]\((.*?)\)/'; // Biểu thức chính quy tìm ảnh trong Markdown
+    preg_match_all($pattern, $text, $matches);
+
+    return $matches[1] ?? []; // Trả về mảng các URL ảnh
+}

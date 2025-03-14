@@ -1,31 +1,55 @@
-import React from 'react';
-import './Projects.css';
+import React, { useContext, useEffect, useState } from 'react';
+import classNames from 'classnames/bind';
+import styles from "./Projects.module.scss";
 // import image from '~/assets/image.png';
 import ProjectList from '~/component/ProjectItem/ProjectList';
-// const projects = [
-//   {
-//     id: 1,
-//     name: 'Project One',
-//     description: 'This is the first project.',
-//     url: 'https://example.com/project-one',
-//     github: 'https://github.com/ngogiaquyen',
-//     image: image,
-//   },
-//   {
-//     id: 2,
-//     name: 'Project Two',
-//     description: 'This is the second project.',
-//     url: 'https://example.com/project-two',
-//     github: 'https://github.com/ngogiaquyen',
-//     image: image,
-//   },
-//   // Add more projects here
-// ];
+import { getData, postData } from '~/helper/apiService';
+import { ModalOverLayContext } from '~/component/Context/ModalOverLayProvider';
+import ConfirmModal from '~/component/ConfirmModal';
+
+const cx = classNames.bind(styles);
 
 function Projects() {
+  const [projects, setProjects] = useState([]);
+  const { setModalComponentContent } = useContext(ModalOverLayContext);
+
+  const loadData = async () => {
+    const data = await getData('/projects/read');
+    console.log(data);
+    if (data.length > 0) {
+      setProjects(data);
+    }
+  };
+
+  const handleRemoveProject = async (id) => {
+    const formData = new FormData();
+    formData.append('id', id);
+    const res = await postData('/projects/delete', formData);
+    console.log(res);
+    if (res.status === 'success') {
+      loadData();
+      setModalComponentContent(null);
+    }
+  };
+
+  const handleShowConfirm = (e, id) => {
+    e.preventDefault();
+    setModalComponentContent(
+      <ConfirmModal
+        title="Xác nhận xóa"
+        handleConfirm={() => handleRemoveProject(id)}
+        handleCancel={() => setModalComponentContent(null)}
+      />,
+    );
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
-    <div className="project-container">
-      <ProjectList />
+    <div className={cx("project-container")}>
+      <ProjectList data={projects} handleRemove={handleShowConfirm} />
     </div>
   );
 }

@@ -1,4 +1,10 @@
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .create-post-btn {
     background-color: #1877f2;
     color: #fff;

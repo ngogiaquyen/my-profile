@@ -7,6 +7,7 @@
 }
 
 .project-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -50,6 +51,12 @@
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  .icon-trash{
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 }
 
